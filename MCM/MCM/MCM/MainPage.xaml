@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MCM"
+             x:Class="MCM.MainPage"
+             BackgroundColor="#6f6f6f">
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!--Label Text="Mobile Cash Manager"
+               FontSize="35"
+               TextColor="LightGray"
+               FontAttributes="Bold"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="End"
+               BackgroundColor="Black"
+               HeightRequest="70"/-->
+
+            <StackLayout Padding="10,10">
+
+                <!--Button x:Name="nowyRachunek"
+                    Text="Nowy rachunek"
+                    FontSize="25"
+                    HeightRequest="80"
+                    Clicked="OnClick_nowyRachunek"/-->
+
+                <Button x:Name="przegladajWydatki"
+                    Text="Przeglądaj wydatki"
+                    FontSize="25"
+                    HeightRequest="80"
+                    Clicked="OnClick_przegladajWydatki"/>
+
+                <Button x:Name="PrzegladajKategorie"
+                    Text="Przeglądaj wydatki"
+                    FontSize="25"
+                    HeightRequest="80"
+                    Clicked="PrzegladajKategorie_Clicked"/>
+
+                <Button x:Name="opcje"
+                    Text="Opcje"
+                    FontSize="25"
+                    HeightRequest="80"
+                    Clicked="OnClick_opcje"/>
+
+                <Button Text="Wyjście"
+                    FontSize="25"
+                    HeightRequest="80"
+                    Clicked="OnClick_wyjscie"/>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MCM.KategoriaDetails"
+             BackgroundColor="#6f6f6f"
+             Title="Dodaj Kategorie">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="DodajPole" Order="Primary" Text="Dodaj Pole" Priority="0" Clicked="DodajPole_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <!--Label Text="Nowy Rachunek"
+               FontSize="Large"
+               TextColor="LightGray"
+               FontAttributes="Bold"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="End"
+               BackgroundColor="Black"
+               HeightRequest="70"/-->
+                <ScrollView>
+            <StackLayout Padding="10,10">
+                    <Grid x:Name="kategorie">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                            Text="Nazwa Kategorii"
+                            FontSize="Large"
+                            TextColor="AliceBlue"
+                            Margin="10"/>
+                        <Entry Grid.Column="1" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                            Text="{Binding Kategoria}"
+                            FontSize="Medium"
+                            BackgroundColor="AliceBlue"
+                            x:Name="kategoriaEntry"/>
+                    </Grid>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                        <Button Text="Save" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" TextColor="White" Clicked="Save_Clicked"/>
+                    <Button Text="Cancel" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" TextColor="White" Clicked="Cancel_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

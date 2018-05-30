@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MCM.DodajKategorie"
+             Title="Edytuj Kategorie">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="NowaKategoria" Order="Primary" Text="Dodaj" Priority="0" Clicked="NowaKategoria_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!--Label Text="Edytuj lub dodaj Kategorie"
+                   FontSize="20"
+                   TextColor="LightGray"
+                   FontAttributes="Bold"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="End"
+                   BackgroundColor="Black"
+                   HeightRequest="70"/-->
+
+            <StackLayout Orientation="Vertical">
+                <ListView x:Name="listaKategorii" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemSelected="ListaKategorii_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Kategoria}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

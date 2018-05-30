@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MCM.PrzegladajWydatki"
+             BackgroundColor="#6f6f6f">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="DodajRachunek" Order="Primary" Text="+" Clicked="DodajRachunek_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+
+        <!--Label Text="Twoje Wydatki"
+                   FontSize="35"
+                   TextColor="LightGray"
+                   FontAttributes="Bold"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="End"
+                   BackgroundColor="Black"
+                   HeightRequest="70"/-->
+
+        <StackLayout Orientation="Vertical">
+            <ListView x:Name="listaRachunkow" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemSelected="ListaRachunkow_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Kategoria}" 
+                                  Detail="{Binding Kwota}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

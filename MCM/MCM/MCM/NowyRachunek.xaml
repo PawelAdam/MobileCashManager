@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MCM.Klasy"
+             x:Class="MCM.NowyRachunek"
+             BackgroundColor="#6f6f6f"
+             Title="Nowy Rachunek">
+    <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <!--" Label Text="Nowy Rachunek"
+               FontSize="Large"
+               TextColor="LightGray"
+               FontAttributes="Bold"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="End"
+               BackgroundColor="Black"
+               HeightRequest="70"/-->
+            <ScrollView>
+                <StackLayout Padding="10,10">
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"/>
+                        <Label Text="Kategoria*"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="CenterAndExpand"/>
+
+                        <Button BackgroundColor="#6f6f6f" 
+                            Text="+"
+                            FontSize="Large"
+                            TextColor="Aquamarine"
+                            Clicked="KategoriaAdd"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+
+                    <Picker x:Name="categoryPicker"
+                    SelectedItem="{Binding Kategoria}"
+                    BackgroundColor="LightSlateGray"/>
+
+                    <Label Text="Kwota*"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   TextColor="Black"/>
+
+                    <Entry x:Name="kwotaEntry"
+                       Text="{Binding Kwota}"
+                       BackgroundColor="LightSlateGray"
+                       Keyboard="Numeric">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <helpers:Trigger/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+
+                    <Label Text="Nazwa"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   TextColor="Black"/>
+
+                    <Entry x:Name="nazwaEntry"
+                   Text="{Binding Nazwa}"
+                    BackgroundColor="LightSlateGray"/>
+
+                    <Label Text="Osoba"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   TextColor="Black"/>
+
+                    <Entry x:Name="OsobaEntry"
+                   Text="{Binding Osoba}"
+                    BackgroundColor="LightSlateGray"/>
+
+                    <Label Text="Typ płatności"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Medium"
+                   TextColor="Black"/>
+
+                    <Picker x:Name="typPicker" 
+                                         
+                    SelectedItem="{Binding TypPlatnosci}"
+                    BackgroundColor="LightSlateGray"/>
+
+                    <Label Text="* wymagane"
+                   TextColor="OrangeRed"/>
+
+                    <StackLayout Orientation="Horizontal" Padding="10,50">
+                        <StackLayout Orientation="Vertical" 
+                         HorizontalOptions="FillAndExpand" 
+                         Padding="20,0">
+                            <Button Text="Cofnij"
+                        Clicked="OnClickCofnij"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" 
+                         HorizontalOptions="FillAndExpand" 
+                         Padding="20,0">
+                            <Button Text="Zatwierdź"
+                        Clicked="OnClickZatwierdz"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
