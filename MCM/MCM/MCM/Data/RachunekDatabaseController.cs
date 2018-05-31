@@ -26,8 +26,7 @@ namespace MCM.Data
         }
         public Task<List<Rachunek>> GetRachunkiSortedAsync(string order)
         {
-            string query = string.Format("SELECT * FROM MCM.db3")
-            return database.QueryAsync<List<Rachunek>>
+            return database.Table<List<Rachunek>>().OrderBy((x, y) => { return x < y; });
         }
         public Task<int> SaveRachunek(Rachunek rachunek)
         {

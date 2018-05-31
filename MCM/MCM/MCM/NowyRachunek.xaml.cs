@@ -17,6 +17,11 @@ namespace MCM
 		public NowyRachunek ()
 		{
             InitializeComponent();
+            typPicker.ItemsSource = new List<string>{
+                "Karta",
+                "Gotówka",
+                "Inny"
+            };
         }
 
         protected async override void OnAppearing()
@@ -32,6 +37,7 @@ namespace MCM
         {
             var rachunekItem = (Rachunek)BindingContext;
             await App.RachunekDatabase.SaveRachunek(rachunekItem);
+            await Navigation.PopToRootAsync();
             await Navigation.PushModalAsync(new NavigationPage(new PrzegladajWydatki()));
         }
         async void KategoriaAdd(object sender, EventArgs e)
