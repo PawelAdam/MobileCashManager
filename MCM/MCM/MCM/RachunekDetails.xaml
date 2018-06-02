@@ -11,26 +11,24 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Kategoria" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
-                <Picker x:Name="kategoriaPicker" BackgroundColor="LightSlateGray" ItemsSource="{Binding Kategoria}" Grid.Row="0" Grid.Column="1"/>
-                <Button Text="+" Grid.Row="0" Grid.Column="2" Clicked="Add_Clicked"/>
+                <Button Text="Kategoria" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Clicked="Add_Clicked"/>
+                <Picker x:Name="kategoriaPicker" BackgroundColor="LightSlateGray" SelectedItem="{Binding Kategoria}" Grid.Row="0" Grid.Column="1"/>
 
                 <Label Text="Kwota" Grid.Row="1" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
-                <Entry x:Name="kwotaEntry" BackgroundColor="LightSlateGray" Keyboard="Numeric" TextChanged="Entry_TextChanged" Grid.Row="1" Grid.Column="1"/>
+                <Entry x:Name="kwotaEntry" BackgroundColor="LightSlateGray" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>
 
                 <Label Text="Nazwa" Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
-                <Entry Text="{Binding Nazwa}" Grid.Row="2" BackgroundColor="LightSlateGray" Grid.Column="1"/>
+                <Entry x:Name="Nazwa" Text="{Binding Nazwa}" Grid.Row="2" BackgroundColor="LightSlateGray" Grid.Column="1"/>
 
                 <Label Text="Osoba" Grid.Row="3" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
-                <Entry Text="{Binding Osoba}" Grid.Row="3" BackgroundColor="LightSlateGray" Grid.Column="1"/>
+                <Entry x:Name="Osoba" Text="{Binding Osoba}" Grid.Row="3" BackgroundColor="LightSlateGray" Grid.Column="1"/>
 
                 <Label Text="Typ Płatności" Grid.Row="4" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
                 <Picker x:Name="typPlatnosciPicker" BackgroundColor="LightSlateGray" SelectedItem="{Binding TypPlatnosci}" Grid.Row="4" Grid.Column="1"/>
 
                 <Label Text="Data Zapisu" Grid.Row="5" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
-                <DatePicker BackgroundColor="LightSlateGray" MinimumDate="01/01/2018" MaximumDate="01/01/2030" Date="{Binding Data}" Grid.Row="5" Grid.Column="1"/>
+                <DatePicker x:Name="Data" BackgroundColor="LightSlateGray" MinimumDate="01/01/2018" MaximumDate="01/01/2030" Date="{Binding Data}" Grid.Row="5" Grid.Column="1"/>
             </Grid>
             <Button x:Name="Save" Text="Save" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" TextColor="White" Clicked="Save_Clicked"/>
             <Button Text="Cancel" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" TextColor="White" Clicked="Cancel_Clicked"/>

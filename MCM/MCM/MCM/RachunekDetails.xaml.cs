@@ -17,6 +17,7 @@ namespace MCM
         private bool firstlaunchview = true;
 		public RachunekDetails ()
 		{
+            
 			InitializeComponent ();
             PopulatePicker();
             typPlatnosciPicker.ItemsSource= new List<string>{
@@ -24,18 +25,13 @@ namespace MCM
                 "Gotówka",
                 "Inny"
             };
-            kwotaEntry.SetBinding(Entry.TextProperty, "Kwota", stringFormat: "{0:C}");
-            kategoriaPicker.SetBinding(Picker.SelectedItemProperty, "Kategoria");
+            kwotaEntry.SetBinding(Entry.TextProperty, "Kwota");
             
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (!firstlaunchview)
-            {
-                PopulatePicker();
-            }
-            else firstlaunchview = true;
+            PopulatePicker();
         }
         async private void PopulatePicker()
         {
@@ -49,6 +45,8 @@ namespace MCM
         async private void Save_Clicked(object sender, EventArgs e)
         {
             var rachunekItem = (Rachunek)BindingContext;
+            if (double.TryParse(kwotaEntry.Text, out double result))
+                rachunekItem.Kwota = Math.Round(result,2);
             await App.RachunekDatabase.SaveRachunek(rachunekItem);
             await Navigation.PopModalAsync();
         }
@@ -56,18 +54,5 @@ namespace MCM
         async private void Cancel_Clicked(object sender, EventArgs e) => await Navigation.PopModalAsync();
 
         async private void Add_Clicked(object sender, EventArgs e) => await Navigation.PushModalAsync(new DodajKategorie() { BindingContext = new Kategorie() });
-
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            char[] originalText = kwotaEntry.Text.ToCharArray();
-            foreach(char c in originalText)
-            {
-                if (!(Char.IsNumber(c) || Char.IsPunctuation(c))) {
-                    kwotaEntry.Text = kwotaEntry.Text.Remove(kwotaEntry.Text.IndexOf(c));
-                    kwotaEntry.BackgroundColor = Color.OrangeRed;
-                } else
-                    kwotaEntry.BackgroundColor = Color.LightSlateGray;
-            };
-        }
     }
 }

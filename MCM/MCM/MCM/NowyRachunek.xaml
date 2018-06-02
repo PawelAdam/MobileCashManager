@@ -53,8 +53,7 @@
                     <Entry x:Name="kwotaEntry"
                            Text="{Binding Kwota}"
                            BackgroundColor="LightSlateGray"
-                           Keyboard="Numeric"
-                           TextChanged="KwotaEntry_TextChanged"/>
+                           Keyboard="Numeric"/>
 
                     <Label Text="Nazwa"
                            HorizontalTextAlignment="Center"
@@ -89,6 +88,9 @@
                            TextColor="Black"/>
                     
                     <DatePicker x:Name="DataPicker"
+                                Date="{Binding Data}"
+                                MinimumDate="01/01/2018"
+                                MaximumDate="01/01/2030"
                                 Format="dd/MM/yyyy"
                                 BackgroundColor="LightSlateGray"/>
 

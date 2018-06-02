@@ -40,6 +40,10 @@ namespace MCM
         private async void OnClickZatwierdz(object sender, EventArgs e)
         {
             var rachunekItem = (Rachunek)BindingContext;
+            if(double.TryParse(kwotaEntry.Text,out double result))
+            {
+                rachunekItem.Kwota = Math.Round(result,2);
+            }
             await App.RachunekDatabase.SaveRachunek(rachunekItem);
             await Navigation.PopModalAsync(true);
         }
@@ -50,19 +54,5 @@ namespace MCM
             await Navigation.PushModalAsync(new NavigationPage(new KategoriaDetails() { BindingContext = new Kategorie() } ));
         }
 
-        private void KwotaEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string newValue = e.NewTextValue;
-            if (!double.TryParse(newValue, out double value))
-            {
-                kwotaEntry.BackgroundColor = Color.OrangeRed;
-                Save.IsEnabled = false;
-            }
-            else
-            {
-                kwotaEntry.BackgroundColor = Color.LightSlateGray;
-                Save.IsEnabled = true;
-            }
-        }
     }
 }

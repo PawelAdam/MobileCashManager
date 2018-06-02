@@ -17,14 +17,14 @@ namespace MCM.Klasy
         public string TypPlatnosci { get; set; }
         public DateTime Data { get; set; }
         public Rachunek() { }
-        public Rachunek(string kategoria, double kwota, string nazwa, string osoba, string typPlatnosci)
+        public Rachunek(string kategoria, double kwota, string nazwa, string osoba, string typPlatnosci, DateTime date)
         {
             Kategoria = kategoria;
-            Kwota = Math.Round(kwota,2);
+            Kwota = Math.Round(kwota, 2);
             Nazwa = nazwa;
             Osoba = osoba;
             TypPlatnosci = typPlatnosci;
-            Data = DateTime.Today;
+            Data = date;
         }
 
 

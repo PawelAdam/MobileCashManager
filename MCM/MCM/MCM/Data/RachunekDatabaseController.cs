@@ -35,7 +35,7 @@ namespace MCM.Data
 
                 case "OSOBA": { return database.Table<Rachunek>().OrderBy(rachunek => rachunek.Osoba).ToListAsync(); }
 
-                case "DATA": { return database.Table<Rachunek>().OrderBy(rachunek => rachunek.Data).ToListAsync(); }
+                case "DATA": { return database.Table<Rachunek>().OrderByDescending(rachunek => rachunek.Data).ToListAsync(); }
 
                 default: { return database.Table<Rachunek>().ToListAsync(); }
             }
