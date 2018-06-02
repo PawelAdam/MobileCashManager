@@ -16,5 +16,23 @@ namespace MCM
 		{
 			InitializeComponent ();
 		}
-	}
+
+        async private void Button_Clicked(object sender, EventArgs e)
+        {
+            if(await DisplayAlert("Czy jesteś pewien", "Ta operacja jest nieodwracalana", "Kontynuuj", "Anuluj"))
+            {
+                App.RachunekDatabase.DropTable().Wait();
+                new Data.RachunekDatabaseController();
+            }
+        }
+
+        async private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            if (await DisplayAlert("Czy jesteś pewien", "Ta operacja jest nieodwracalana", "Kontynuuj", "Anuluj"))
+            {
+                App.KategoriaDatabase.DropTable().Wait();
+                new Data.KategorieDatabaseController();
+            }
+        }
+    }
 }

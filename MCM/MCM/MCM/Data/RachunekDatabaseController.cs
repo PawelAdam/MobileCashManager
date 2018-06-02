@@ -26,7 +26,19 @@ namespace MCM.Data
         }
         public Task<List<Rachunek>> GetRachunkiSortedAsync(string order)
         {
-            return database.Table<List<Rachunek>>().OrderBy((x, y) => { return x < y; });
+            order.ToUpper();
+            switch(order)
+            {
+                case "KATEGORIE": { return database.Table<Rachunek>().OrderBy(rachunek => rachunek.Kategoria).ToListAsync(); }
+
+                case "KWOTA": { return database.Table<Rachunek>().OrderBy(rachunek => rachunek.Kwota).ToListAsync(); }
+
+                case "OSOBA": { return database.Table<Rachunek>().OrderBy(rachunek => rachunek.Osoba).ToListAsync(); }
+
+                case "DATA": { return database.Table<Rachunek>().OrderBy(rachunek => rachunek.Data).ToListAsync(); }
+
+                default: { return database.Table<Rachunek>().ToListAsync(); }
+            }
         }
         public Task<int> SaveRachunek(Rachunek rachunek)
         {
@@ -43,6 +55,10 @@ namespace MCM.Data
         public Task<int> DeleteRachunek(Rachunek rachunek)
         {
             return database.DeleteAsync(rachunek);
+        }
+        public Task<int> DropTable()
+        {
+            return database.DropTableAsync<Rachunek>();
         }
 
     }

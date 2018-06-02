@@ -33,7 +33,7 @@
                     Clicked="OnClick_przegladajWydatki"/>
 
                 <Button x:Name="PrzegladajKategorie"
-                    Text="Przeglądaj wydatki"
+                    Text="Przeglądaj Kategorie"
                     FontSize="25"
                     HeightRequest="80"
                     Clicked="PrzegladajKategorie_Clicked"/>

@@ -20,11 +20,11 @@ namespace MCM.Klasy
         public Rachunek(string kategoria, double kwota, string nazwa, string osoba, string typPlatnosci)
         {
             Kategoria = kategoria;
-            Kwota = kwota;
+            Kwota = Math.Round(kwota,2);
             Nazwa = nazwa;
             Osoba = osoba;
             TypPlatnosci = typPlatnosci;
-            Data = DateTime.Now.Date;
+            Data = DateTime.Today;
         }
 
 

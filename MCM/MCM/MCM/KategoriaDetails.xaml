@@ -31,7 +31,7 @@
                             TextColor="AliceBlue"
                             Margin="10"/>
                         <Entry Grid.Column="1" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
-                            Text="{Binding Kategoria}"
+                            Text="{Binding NazwaKategorii}"
                             FontSize="Medium"
                             BackgroundColor="AliceBlue"
                             x:Name="kategoriaEntry"/>

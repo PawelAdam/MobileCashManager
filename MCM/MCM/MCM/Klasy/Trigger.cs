@@ -12,7 +12,7 @@ namespace MCM.Klasy
 
         protected override void Invoke(Xamarin.Forms.Entry entry)
         {
-            var isNumeric = int.TryParse(entry.Text, out int n);
+            var isNumeric = double.TryParse(entry.Text, out double n);
 
             if (!string.IsNullOrWhiteSpace(entry.Text) && (entry.Text.Length > 9 || !isNumeric))
             {

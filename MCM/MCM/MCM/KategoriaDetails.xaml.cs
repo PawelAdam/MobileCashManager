@@ -45,15 +45,15 @@ namespace MCM
         private void DodajPole_Clicked(object sender, EventArgs e)
         {
             gridColumnNumber++;
-            kategorie.Children.Add(
-                new Label
-                {
-                    HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                    Text="Nazwa kategorii",
-                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                    TextColor = Color.AliceBlue
-                },0,gridColumnNumber);
+            //kategorie.Children.Add(
+            //    new label
+            //    {
+            //        horizontaloptions = layoutoptions.fillandexpand,
+            //        verticaloptions = layoutoptions.fillandexpand,
+            //        text="nazwa kategorii",
+            //        fontsize = device.getnamedsize(namedsize.medium, typeof(label)),
+            //        textcolor = color.aliceblue
+            //    },0,gridcolumnnumber);
 
             kategorie.Children.Add(
                 new Entry

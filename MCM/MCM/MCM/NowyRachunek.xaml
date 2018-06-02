@@ -26,84 +26,88 @@
                         <Label HorizontalOptions="FillAndExpand"
                                VerticalOptions="FillAndExpand"/>
                         <Label Text="Kategoria*"
-                           HorizontalTextAlignment="Center"
-                           FontSize="Medium"
-                           TextColor="Black"
+                               HorizontalTextAlignment="Center"
+                               FontSize="Medium"
+                               TextColor="Black"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="CenterAndExpand"/>
 
                         <Button BackgroundColor="#6f6f6f" 
-                            Text="+"
-                            FontSize="Large"
-                            TextColor="Aquamarine"
-                            Clicked="KategoriaAdd"
+                                Text="+"
+                                FontSize="Large"
+                                TextColor="Aquamarine"
+                                Clicked="KategoriaAdd"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
 
                     <Picker x:Name="categoryPicker"
-                    SelectedItem="{Binding Kategoria}"
-                    BackgroundColor="LightSlateGray"/>
+                            SelectedItem="{Binding Kategoria}"
+                            BackgroundColor="LightSlateGray"/>
 
                     <Label Text="Kwota*"
-                   HorizontalTextAlignment="Center"
-                   FontSize="Medium"
-                   TextColor="Black"/>
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"/>
 
                     <Entry x:Name="kwotaEntry"
-                       Text="{Binding Kwota}"
-                       BackgroundColor="LightSlateGray"
-                       Keyboard="Numeric">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <helpers:Trigger/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                    </Entry>
+                           Text="{Binding Kwota}"
+                           BackgroundColor="LightSlateGray"
+                           Keyboard="Numeric"
+                           TextChanged="KwotaEntry_TextChanged"/>
 
                     <Label Text="Nazwa"
-                   HorizontalTextAlignment="Center"
-                   FontSize="Medium"
-                   TextColor="Black"/>
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"/>
 
                     <Entry x:Name="nazwaEntry"
-                   Text="{Binding Nazwa}"
-                    BackgroundColor="LightSlateGray"/>
+                           Text="{Binding Nazwa}"
+                            BackgroundColor="LightSlateGray"/>
 
                     <Label Text="Osoba"
-                   HorizontalTextAlignment="Center"
-                   FontSize="Medium"
-                   TextColor="Black"/>
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"/>
 
                     <Entry x:Name="OsobaEntry"
-                   Text="{Binding Osoba}"
-                    BackgroundColor="LightSlateGray"/>
+                           Text="{Binding Osoba}"
+                           BackgroundColor="LightSlateGray"/>
 
                     <Label Text="Typ płatności"
-                   HorizontalTextAlignment="Center"
-                   FontSize="Medium"
-                   TextColor="Black"/>
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"/>
 
-                    <Picker x:Name="typPicker" 
-                                         
-                    SelectedItem="{Binding TypPlatnosci}"
-                    BackgroundColor="LightSlateGray"/>
+                    <Picker x:Name="typPicker"                                          
+                            SelectedItem="{Binding TypPlatnosci}"
+                            BackgroundColor="LightSlateGray"/>
+
+                    <Label Text="Data"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium"
+                           TextColor="Black"/>
+                    
+                    <DatePicker x:Name="DataPicker"
+                                Format="dd/MM/yyyy"
+                                BackgroundColor="LightSlateGray"/>
 
                     <Label Text="* wymagane"
-                   TextColor="OrangeRed"/>
+                           TextColor="OrangeRed"/>
 
-                    <StackLayout Orientation="Horizontal" Padding="10,50">
+                    <StackLayout Orientation="Horizontal" Padding="10">
                         <StackLayout Orientation="Vertical" 
-                         HorizontalOptions="FillAndExpand" 
-                         Padding="20,0">
+                                     HorizontalOptions="FillAndExpand" 
+                                     Padding="20,10">
                             <Button Text="Cofnij"
-                        Clicked="OnClickCofnij"/>
+                                    Clicked="OnClickCofnij"/>
                         </StackLayout>
                         <StackLayout Orientation="Vertical" 
-                         HorizontalOptions="FillAndExpand" 
-                         Padding="20,0">
+                                     HorizontalOptions="FillAndExpand" 
+                                     Padding="20,10">
                             <Button Text="Zatwierdź"
-                        Clicked="OnClickZatwierdz"/>
+                                    x:Name="Save"
+                                    Clicked="OnClickZatwierdz"/>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

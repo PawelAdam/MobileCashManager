@@ -22,9 +22,9 @@ namespace MCM
 
         }
         protected async override void OnAppearing()
-        {
+        { 
             base.OnAppearing();
-            listaRachunkow.ItemsSource = await App.RachunekDatabase.GetRachunkiAsync();
+            listaRachunkow.ItemsSource = await App.RachunekDatabase.GetRachunkiSortedAsync("data");
         }
 
         async private void ListaRachunkow_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -38,6 +38,7 @@ namespace MCM
         async private void DodajRachunek_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NowyRachunek() { BindingContext = new Rachunek() });
+            
         }
     }
 }

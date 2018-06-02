@@ -9,12 +9,12 @@ namespace MCM.Klasy
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public string Kategoria { get; set; }
+        public string NazwaKategorii { get; set; }
 
         public Kategorie() { }
         public Kategorie(string kategoria)
         {
-            Kategoria = kategoria;
+            NazwaKategorii = kategoria;
         }
     }
 }

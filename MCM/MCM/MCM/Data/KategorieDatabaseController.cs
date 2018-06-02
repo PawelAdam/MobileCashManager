@@ -45,6 +45,10 @@ namespace MCM.Data
             return database.DeleteAsync(kategoria);
 
         }
+        public Task<int> DropTable()
+        {
+            return database.DropTableAsync<Kategorie>();
+        }
 
     }
 }
