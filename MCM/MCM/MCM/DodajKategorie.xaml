@@ -5,26 +5,15 @@
              Title="Edytuj Kategorie"
              BackgroundColor="#6f6f6f">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="NowaKategoria" Order="Primary" Text="Dodaj" Priority="0" Clicked="NowaKategoria_Clicked"/>
+        <ToolbarItem Text="+" Order="Primary" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-
-            <!--Label Text="Edytuj lub dodaj Kategorie"
-                   FontSize="20"
-                   TextColor="LightGray"
-                   FontAttributes="Bold"
-                   HorizontalOptions="FillAndExpand"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="End"
-                   BackgroundColor="Black"
-                   HeightRequest="70"/-->
-
+        <StackLayout Margin="10">
             <StackLayout Orientation="Vertical">
                 <ListView x:Name="listaKategorii" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemSelected="ListaKategorii_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding NazwaKategorii}"/>
+                            <TextCell Text="{Binding KategoriaName}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

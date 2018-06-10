@@ -7,6 +7,6 @@ namespace MCM.Data
 {
     public interface ISQLite
     {
-        SQLiteAsyncConnection GetAsyncConnection();
+        SQLiteConnection GetConnection();
     }
 }

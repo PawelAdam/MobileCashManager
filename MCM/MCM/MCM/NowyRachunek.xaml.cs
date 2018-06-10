@@ -15,6 +15,7 @@ namespace MCM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NowyRachunek : ContentPage
 	{
+        private List<Kategorie> kt;
 		public NowyRachunek ()
 		{
             InitializeComponent();
@@ -25,14 +26,15 @@ namespace MCM
             };
             DataPicker.Date = DateTime.Now;
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            List < Kategorie > kategories = await App.KategoriaDatabase.GetKategorieAsync();
-            List<string> katestringlist = new List<string>();
-            foreach (Kategorie k in kategories)
-                katestringlist.Add(k.NazwaKategorii.ToString());
-            categoryPicker.ItemsSource = katestringlist;
+            kt = App.DatabaseController.GetKategorie();
+            foreach (Kategorie k in kt)
+            {
+                Kategoria.Items.Add(k.KategoriaName);
+            }
+            
         }
 
         private async void OnClickCofnij(object sender, EventArgs e) => await Navigation.PopModalAsync();
@@ -44,15 +46,15 @@ namespace MCM
             {
                 rachunekItem.Kwota = Math.Round(result,2);
             }
-            await App.RachunekDatabase.SaveRachunek(rachunekItem);
+            Kategorie k = App.DatabaseController.GetKategoriaByString(Kategoria.SelectedItem.ToString());
+            rachunekItem.KategoriaID = k.KategoriaID;
+            App.DatabaseController.SaveRachunek(rachunekItem);
             await Navigation.PopModalAsync(true);
         }
 
         private async void KategoriaAdd(object sender, EventArgs e)
         {
-            //await Navigation.PopModalAsync(false);
-            await Navigation.PushModalAsync(new NavigationPage(new KategoriaDetails() { BindingContext = new Kategorie() } ));
+            await Navigation.PushModalAsync(new NavigationPage(new DodajKategorie()));
         }
-
     }
 }

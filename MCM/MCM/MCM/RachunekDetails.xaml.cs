@@ -14,45 +14,56 @@ namespace MCM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RachunekDetails : ContentPage
 	{
-        private bool firstlaunchview = true;
-		public RachunekDetails ()
+        private string[] ps;
+        private JointTables jt;
+		public RachunekDetails (JointTables jointTables)
 		{
-            
 			InitializeComponent ();
-            PopulatePicker();
             typPlatnosciPicker.ItemsSource= new List<string>{
                 "Karta",
                 "Gotówka",
                 "Inny"
             };
             kwotaEntry.SetBinding(Entry.TextProperty, "Kwota");
-            
+            jt = jointTables;
+            kategoriaPicker.Text = App.DatabaseController.GetKategoria(jt.KategoriaID).KategoriaName;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            PopulatePicker();
+            PopulateActionSheet();
         }
-        async private void PopulatePicker()
+        private void PopulateActionSheet()
         {
-            List<Kategorie> kategories = await App.KategoriaDatabase.GetKategorieAsync();
-            List<string> katestringlist = new List<string>();
-            foreach (Kategorie k in kategories)
-                katestringlist.Add(k.NazwaKategorii.ToString());
-            kategoriaPicker.ItemsSource = katestringlist;
+            List<Kategorie> kategories =  App.DatabaseController.GetKategorie();
+            ps = new string[kategories.Count];
+            int i = 0;
+            foreach(Kategorie k in kategories)
+            {
+                ps[i] = k.KategoriaName;
+                i++;
+            }
         }
 
         async private void Save_Clicked(object sender, EventArgs e)
         {
+            var kategoriaItem = App.DatabaseController.GetKategoriaByString(kategoriaPicker.Text);
             var rachunekItem = (Rachunek)BindingContext;
+            rachunekItem.KategoriaID = kategoriaItem.KategoriaID;
             if (double.TryParse(kwotaEntry.Text, out double result))
                 rachunekItem.Kwota = Math.Round(result,2);
-            await App.RachunekDatabase.SaveRachunek(rachunekItem);
+            App.DatabaseController.SaveRachunek(rachunekItem);
             await Navigation.PopModalAsync();
         }
 
         async private void Cancel_Clicked(object sender, EventArgs e) => await Navigation.PopModalAsync();
 
-        async private void Add_Clicked(object sender, EventArgs e) => await Navigation.PushModalAsync(new DodajKategorie() { BindingContext = new Kategorie() });
+        async private void Add_Clicked(object sender, EventArgs e) => await Navigation.PushModalAsync(new DodajKategorie());
+
+        private async void KategoriaSheet_Clicked(object sender, EventArgs e)
+        {
+            var action = await DisplayActionSheet("Wyierz Kategorię", "Anuluj", null, ps);
+            kategoriaPicker.Text = action.ToString();
+        }
     }
 }

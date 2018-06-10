@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCM.Android", "MCM\MCM.Android\MCM.Android.csproj", "{5ED0BEB1-7EB8-44B7-9309-2B3747360E07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCM", "MCM\MCM\MCM.csproj", "{1CD46B46-2F02-4258-9E29-09D0231C5F6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCM", "MCM\MCM\MCM.csproj", "{1CD46B46-2F02-4258-9E29-09D0231C5F6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

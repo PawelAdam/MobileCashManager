@@ -14,6 +14,7 @@ using System.IO;
 using MCM.Data;
 using MCM.Droid.Data;
 using SQLite;
+using SQLiteNetExtensions;
 
 [assembly: Dependency(typeof(SQLite_Android))]
 
@@ -22,12 +23,12 @@ namespace MCM.Droid.Data
     public class SQLite_Android : ISQLite
     {
         public SQLite_Android() { }
-        public SQLite.SQLiteAsyncConnection GetAsyncConnection()
+        public SQLite.SQLiteConnection GetConnection()
         {
-            var sqliteFileName = "MCM.db3";
+            string sqliteFileName = "MCM.db3";
             string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            var path = Path.Combine(documentsPath, sqliteFileName);
-            var conn = new SQLite.SQLiteAsyncConnection(path);
+            string path = Path.Combine(documentsPath, sqliteFileName);
+            var conn = new SQLite.SQLiteConnection(path);
 
             return conn;
         }

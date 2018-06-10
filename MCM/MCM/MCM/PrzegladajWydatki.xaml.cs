@@ -21,17 +21,20 @@ namespace MCM
             Title = "Lista Rachunków";
 
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         { 
             base.OnAppearing();
-            listaRachunkow.ItemsSource = await App.RachunekDatabase.GetRachunkiSortedAsync("data");
+            List<JointTables> jt = App.DatabaseController.GetJointTables();
+            listaRachunkow.ItemsSource = jt;
         }
 
         async private void ListaRachunkow_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushModalAsync(new RachunekDetails() { BindingContext = e.SelectedItem as Rachunek });
+                JointTables jt = (JointTables)e.SelectedItem;
+                Rachunek r = App.DatabaseController.GetRachunek(jt.RachunekID);
+                await Navigation.PushModalAsync(new RachunekDetails(jt) { BindingContext = r});
             }
         }
 

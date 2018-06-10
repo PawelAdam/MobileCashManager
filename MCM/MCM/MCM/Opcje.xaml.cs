@@ -21,8 +21,8 @@ namespace MCM
         {
             if(await DisplayAlert("Czy jesteś pewien", "Ta operacja jest nieodwracalana", "Kontynuuj", "Anuluj"))
             {
-                App.RachunekDatabase.DropTable().Wait();
-                new Data.RachunekDatabaseController();
+                App.DatabaseController.DropRachunekTable();
+                new Data.DatabaseController();
             }
         }
 
@@ -30,8 +30,8 @@ namespace MCM
         {
             if (await DisplayAlert("Czy jesteś pewien", "Ta operacja jest nieodwracalana", "Kontynuuj", "Anuluj"))
             {
-                App.KategoriaDatabase.DropTable().Wait();
-                new Data.KategorieDatabaseController();
+                App.DatabaseController.DropKategoriaTable();
+                new Data.DatabaseController();
             }
         }
     }

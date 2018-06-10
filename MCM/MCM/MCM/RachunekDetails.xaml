@@ -4,6 +4,7 @@
              x:Class="MCM.RachunekDetails"
              BackgroundColor="#6f6f6f">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edytuj Kategorie" Clicked="Add_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -12,8 +13,8 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Text="Kategoria" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Clicked="Add_Clicked"/>
-                <Picker x:Name="kategoriaPicker" BackgroundColor="LightSlateGray" SelectedItem="{Binding Kategoria}" Grid.Row="0" Grid.Column="1"/>
+                <Button x:Name="KategoriaSheet" Text="Kategoria&#10;(zmień)" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Clicked="KategoriaSheet_Clicked"/>
+                <Label x:Name="kategoriaPicker" Text="{Binding KategoriaName}" IsEnabled="False" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" BackgroundColor="LightSlateGray"  Grid.Row="0" Grid.Column="1"/>
 
                 <Label Text="Kwota" Grid.Row="1" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
                 <Entry x:Name="kwotaEntry" BackgroundColor="LightSlateGray" Keyboard="Numeric" Grid.Row="1" Grid.Column="1"/>

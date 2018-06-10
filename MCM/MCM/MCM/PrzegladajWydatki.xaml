@@ -7,23 +7,16 @@
         <ToolbarItem Name="DodajRachunek" Order="Primary" Text="+" Clicked="DodajRachunek_Clicked"/>
     </ContentPage.ToolbarItems>
     <StackLayout>
-
-        <!--Label Text="Twoje Wydatki"
-                   FontSize="35"
-                   TextColor="LightGray"
-                   FontAttributes="Bold"
-                   HorizontalOptions="FillAndExpand"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="End"
-                   BackgroundColor="Black"
-                   HeightRequest="70"/-->
-
         <StackLayout Orientation="Vertical">
             <ListView x:Name="listaRachunkow" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ItemSelected="ListaRachunkow_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Kategoria}" 
-                                  Detail="{Binding Kwota}"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding KategoriaName}" FontAttributes="Bold" FontSize="Large" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Kwota}" FontAttributes="Bold" FontSize="Large" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

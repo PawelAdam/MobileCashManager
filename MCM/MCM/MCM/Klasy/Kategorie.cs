@@ -1,20 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
+using System.Windows.Input;
 
 namespace MCM.Klasy
 {
+    [Table("Kategorie")]
     public class Kategorie
     {
         [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
-        public string NazwaKategorii { get; set; }
+        public int KategoriaID { get; set; }
+        public string KategoriaName { get; set; }
+        [OneToMany]
+        public virtual List<Rachunek> Rachinki { get; set; }
 
-        public Kategorie() { }
-        public Kategorie(string kategoria)
+        public Kategorie()
         {
-            NazwaKategorii = kategoria;
+
         }
+        public override int GetHashCode()
+        {
+            return KategoriaID;
+        }
+        
     }
 }

@@ -9,40 +9,16 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-
-            <!--" Label Text="Nowy Rachunek"
-               FontSize="Large"
-               TextColor="LightGray"
-               FontAttributes="Bold"
-               HorizontalOptions="FillAndExpand"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="End"
-               BackgroundColor="Black"
-               HeightRequest="70"/-->
             <ScrollView>
                 <StackLayout Padding="10,10">
-
                     <StackLayout Orientation="Horizontal">
-                        <Label HorizontalOptions="FillAndExpand"
-                               VerticalOptions="FillAndExpand"/>
-                        <Label Text="Kategoria*"
-                               HorizontalTextAlignment="Center"
-                               FontSize="Medium"
-                               TextColor="Black"
-                               HorizontalOptions="FillAndExpand"
-                               VerticalOptions="CenterAndExpand"/>
-
-                        <Button BackgroundColor="#6f6f6f" 
-                                Text="+"
-                                FontSize="Large"
-                                TextColor="Aquamarine"
-                                Clicked="KategoriaAdd"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="CenterAndExpand"/>
+                        <Label HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                        <Label Text="Kategoria*" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="Black" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Button BackgroundColor="#6f6f6f" Text="+" FontSize="Large" TextColor="Aquamarine" Clicked="KategoriaAdd" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
 
-                    <Picker x:Name="categoryPicker"
-                            SelectedItem="{Binding Kategoria}"
+                    <Picker x:Name="Kategoria"
+                            SelectedItem="{Binding KategoriaName}"
                             BackgroundColor="LightSlateGray"/>
 
                     <Label Text="Kwota*"

@@ -11,8 +11,7 @@ namespace MCM
 {
     public partial class App : Application
     {
-        private static RachunekDatabaseController rachunekDatabase;
-        private static KategorieDatabaseController kategoriaDatabase;
+        private static DatabaseController dbc;
         public App()
         {
             InitializeComponent();
@@ -35,29 +34,18 @@ namespace MCM
             // Handle when your app resumes
         }
 
-        public static RachunekDatabaseController RachunekDatabase
+        public static DatabaseController DatabaseController
         {
             get
             {
-                if (rachunekDatabase == null)
+                if (dbc == null)
                 {
-                    rachunekDatabase = new RachunekDatabaseController();
+                    dbc = new DatabaseController();
                 }
-                return rachunekDatabase;
+                return dbc;
             }
         }
 
-        public static KategorieDatabaseController KategoriaDatabase
-        {
-            get
-            {
-                if (kategoriaDatabase == null)
-                {
-                    kategoriaDatabase = new KategorieDatabaseController();
-                }
-                return kategoriaDatabase;
-            }
-        }
         public static void Shutdown()
         {
             var closer = DependencyService.Get<ICloseApplication>();

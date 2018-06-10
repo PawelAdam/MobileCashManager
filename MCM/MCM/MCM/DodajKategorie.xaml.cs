@@ -13,27 +13,35 @@ namespace MCM
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DodajKategorie : ContentPage
 	{
-		public DodajKategorie ()
+        public DodajKategorie()
 		{
 			InitializeComponent ();
         }
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            listaKategorii.ItemsSource = await App.KategoriaDatabase.GetKategorieAsync();
+            listaKategorii.ItemsSource = App.DatabaseController.GetKategorie();
         }
 
-        async private void ListaKategorii_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void ListaKategorii_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushModalAsync(new KategoriaDetails() { BindingContext = e.SelectedItem as Kategorie });
+                if(await DisplayAlert("Akcja", "Co chcesz zrobić", "Edytuj", "Usuń"))
+                {
+                    await Navigation.PushModalAsync(new NavigationPage(new KategoriaDetails() { BindingContext = e.SelectedItem as Kategorie }));
+                }
+                else
+                {
+                    App.DatabaseController.DeleteKategoria(e.SelectedItem as Kategorie);
+                    OnAppearing();
+                }
             }
         }
 
-        async private void NowaKategoria_Clicked(object sender, EventArgs e)
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new KategoriaDetails() { BindingContext = new Kategorie() });
+            await Navigation.PushModalAsync(new NavigationPage(new KategoriaDetails() { BindingContext = new Kategorie() }));
         }
     }
 }
